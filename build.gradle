@@ -1,19 +1,19 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'scala'
 
-sourceCompatibility = 1.5
-version = '1.0'
-jar {
-    manifest {
-        attributes 'Implementation-Title': 'Gradle Quickstart', 'Implementation-Version': version
-    }
-}
+sourceCompatibility = 1.8
+
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 dependencies {
+// thanks http://blogs.steeplesoft.com/posts/2013/a-quick-start-for-scala-and-gradle.html
+compile 'org.slf4j:slf4j-api:1.7.5'
+    compile "org.scala-lang:scala-library:2.10.1"
 	compile 'org.apache.commons:commons-lang3:3.4'
     compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
     testCompile group: 'junit', name: 'junit', version: '4.+'
@@ -23,10 +23,4 @@ test {
     systemProperties 'property': 'value'
 }
 
-uploadArchives {
-    repositories {
-       flatDir {
-           dirs 'repos'
-       }
-    }
-}
+
